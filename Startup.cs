@@ -70,7 +70,7 @@ namespace UsersMicroservice
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserContext userContext)
         {
             if (env.IsDevelopment())
             {
@@ -79,6 +79,7 @@ namespace UsersMicroservice
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "UsersMicroservice v1"));
             }
 
+            userContext.Database.Migrate();
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             app.UseAuthentication();

@@ -14,6 +14,6 @@ namespace UsersMicroservice.Data
         
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql("Host=localhost;Database=dockerization;Username=postgres;Password=postgres");
+            => optionsBuilder.UseNpgsql("Host=postgres-0;Database=dockerization;Username=postgres;Password=postgres");
     }
 }
